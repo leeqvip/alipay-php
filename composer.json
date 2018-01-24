@@ -1,0 +1,19 @@
+{
+    "name": "techleeone/alipay-php",
+    "description": "alipay for php",
+    "keywords": ["alipay"],
+    "authors": [
+        {
+            "name": "TechLee",
+            "email": "techlee@qq.com"
+        }
+    ],
+    "require": {
+        "php": "~5.3|~7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TechOne\\Alipay\\": "src/" 
+        }
+    }    
+}
