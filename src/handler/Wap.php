@@ -3,7 +3,7 @@ namespace TechOne\Alipay\handler;
 
 /**
  * 手机网站支付
- * @author TechLee <liqiang1436@stnts.com>
+ * @author TechLee <techlee@qq.com>
  */
 class Wap extends Base
 {

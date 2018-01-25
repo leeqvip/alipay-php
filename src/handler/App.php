@@ -3,13 +3,13 @@ namespace TechOne\Alipay\handler;
 
 /**
  * 支付宝APP支付
- * @author TechLee <liqiang1436@stnts.com>
+ * @author TechLee <techlee@qq.com>
  */
 class App extends Base
 {
     /**
      * 获取app客户端请求参数字符串
-     * @author TechLee <liqiang1436@stnts.com>
+     * @author TechLee <techlee@qq.com>
      * @return string 字符串
      */
     public function execute()

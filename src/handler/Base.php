@@ -8,7 +8,7 @@ use TechOne\Alipay\Helper;
 
 /**
  * 支付宝交易基础类
- * @author TechLee <liqiang1436@stnts.com>
+ * @author TechLee <techlee@qq.com>
  */
 abstract class Base
 {
