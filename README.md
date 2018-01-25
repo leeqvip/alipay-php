@@ -49,7 +49,7 @@ $bizcontent = [
     'total_amount'    => '0.01',
     'product_code'    => 'QUICK_MSECURITY_PAY',
 ];
-// $result = $pay->biz($bizcontent)->execute();
+$result = $pay->biz($bizcontent)->execute();
 ```
 ##### 查询订单
 
@@ -64,24 +64,21 @@ $result = $pay->isSuccess('20170125test01', $type);
 ##### 退款
 
 ```
-// $bizcontent = [
-//     'out_trade_no'  => '20170125test01', // 订单支付时传入的商户订单号,不能和 trade_no同时为空。
-//     // 'trade_no'      => '2014112611001004680073956707', // 支付宝交易号，和商户订单号不能同时为空
-//     'refund_amount' => '0.01', // 需要退款的金额，该金额不能大于订单金额,单位为元，支持两位小数
-//     'refund_reason' => '正常退款', // 退款的原因说明
-// ];
-// $result = $pay->biz($bizcontent)->refund();
-// if ($result->code == 10000) {
-//     // 成功
-// }
+$bizcontent = [
+    'out_trade_no'  => '20170125test01', // 订单支付时传入的商户订单号,不能和 trade_no同时为空。
+    // 'trade_no'      => '2014112611001004680073956707', // 支付宝交易号，和商户订单号不能同时为空
+    'refund_amount' => '0.01', // 需要退款的金额，该金额不能大于订单金额,单位为元，支持两位小数
+    'refund_reason' => '正常退款', // 退款的原因说明
+];
+$result = $pay->biz($bizcontent)->refund();
+if ($result->code == 10000) {
+    // 成功
+}
 ```
 
 ##### 交易关闭
 
 ```
-$bizcontent = [
-
-];
 // $type     订单号类型，out_trade_no|商户订单号(默认)，trade_no|支付宝交易号
 $result = $pay->close('20170125test01', $type);
 if ($result->code == 10000) {
