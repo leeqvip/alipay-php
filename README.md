@@ -10,7 +10,7 @@ composer require techleeone/alipay-php
 
 ```
 // 如果是使用支持composer自动加载的框架（比如thinkphp，laravel），则无需require。
-require_once dirname(__FILE__) . '/../vendor/autoload.php';
+require_once dirname(__FILE__) . '/vendor/autoload.php';
 use TechOne\Alipay\Pay;
 // 配置参数
 $configs = [
