@@ -31,6 +31,18 @@ abstract class Base
     protected $signType = 'RSA';
 
     /**
+     * 异步通知地址
+     * @var string
+     */
+    protected $notifyUrl = '';
+
+    /**
+     * 同步返回地址
+     * @var string
+     */
+    protected $returnUrl = '';
+
+    /**
      * 配置
      * @var array
      */
@@ -73,6 +85,12 @@ abstract class Base
     abstract public function execute();
 
     /**
+     * 销售产品码，商家和支付宝签约的产品码
+     * @return string 销售产品码
+     */
+    abstract public function getProductCode();
+
+    /**
      * 配置
      * @return array [description]
      */
@@ -104,13 +122,53 @@ abstract class Base
     }
 
     /**
+     * 异步通知地址
+     * @param  string $url
+     */
+    public function getNotifyUrl()
+    {
+        return $this->notifyUrl;
+    }
+
+    /**
+     * 同步通知地址
+     * @param  string $url
+     */
+    public function getReturnUrl()
+    {
+        return $this->returnUrl;
+    }
+
+    /**
+     * 设置异步通知地址
+     * @param  string $url
+     */
+    public function setNotifyUrl($url)
+    {
+        $this->notifyUrl = $url;
+        return $this;
+    }
+
+    /**
+     * 设置同步返回地址
+     * @param  string $url
+     */
+    public function setReturnUrl($url)
+    {
+        $this->returnUrl = $url;
+        return $this;
+    }
+
+    /**
      * 设置业务请求参数
      * @param  array  $bizcontent 业务线请求参数
      * @return class
      */
     public function biz($bizcontent = [])
     {
-        $this->bizcontent = $bizcontent;
+        $bizcontent['timeout_express'] = isset($bizcontent['timeout_express']) ? $bizcontent['timeout_express'] : $this->config('timeout_express');
+        $bizcontent['product_code']    = isset($bizcontent['product_code']) ? $bizcontent['product_code'] : $this->getProductCode();
+        $this->bizcontent              = $bizcontent;
         return $this;
     }
 

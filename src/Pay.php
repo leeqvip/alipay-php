@@ -4,7 +4,9 @@ namespace TechOne\Alipay;
 use TechOne\Alipay\Helper;
 
 /**
+ * 支付实例
  *
+ * @author TechLee <techlee@qq.com>
  */
 class Pay
 {

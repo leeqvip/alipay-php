@@ -8,16 +8,30 @@ namespace TechOne\Alipay\handler;
 class Page extends Base
 {
     /**
-     * 发起支付
-     * @return void
+     * 销售产品码，商家和支付宝签约的产品码
+     * @return string 销售产品码
      */
-    public function execute()
+    public function getProductCode()
+    {
+        return 'FAST_INSTANT_TRADE_PAY';
+    }
+
+    /**
+     * 发起支付
+     * @param  boolean $jumpAuto 自动跳转
+     * @return string|void
+     */
+    public function execute($jumpAuto = true)
     {
         $request = new \AlipayTradePagePayRequest();
         //SDK已经封装掉了公共参数，这里只需要传入业务参数
-        $request->setNotifyUrl($this->config('notify_url'));
-        $request->setReturnUrl($this->config('return_url'));
+        $request->setNotifyUrl($this->getNotifyUrl());
+        $request->setReturnUrl($this->getReturnUrl());
         $request->setBizContent(json_encode($this->bizcontent));
-        return $this->aop->pageExecute($request);
+        $result = $this->aop->pageExecute($request);
+        if ($jumpAuto) {
+            exit($result);
+        }
+        return $result;
     }
 }

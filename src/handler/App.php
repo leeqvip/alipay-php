@@ -8,16 +8,25 @@ namespace TechOne\Alipay\handler;
 class App extends Base
 {
     /**
-     * 获取app客户端请求参数字符串
-     * @author TechLee <techlee@qq.com>
-     * @return string 字符串
+     * 销售产品码，商家和支付宝签约的产品码
+     * @return string 销售产品码
      */
-    public function execute()
+    public function getProductCode()
+    {
+        return 'QUICK_MSECURITY_PAY';
+    }
+
+    /**
+     * 获取app客户端请求参数字符串
+     * @param  boolean $jumpAuto 无任何意义
+     * @return string
+     */
+    public function execute($jumpAuto = true)
     {
         //实例化具体API对应的request类,类名称和接口名称对应,当前调用接口名称：alipay.trade.app.pay
         $request = new \AlipayTradeAppPayRequest();
         //SDK已经封装掉了公共参数，这里只需要传入业务参数
-        $request->setNotifyUrl($this->config('notify_url'));
+        $request->setNotifyUrl($this->getNotifyUrl());
         $request->setBizContent(json_encode($this->bizcontent));
         //这里和普通的接口调用不同，使用的是sdkExecute
         $response = $this->aop->sdkExecute($request);
