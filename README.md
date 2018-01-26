@@ -40,7 +40,7 @@ $configs = [
 ### 获取实例
 
 ```
-支付实例类型，page|电脑网站支付，wap|手机网站支付，app|App支付，更多敬请期待
+// 支付实例类型，page|电脑网站支付，wap|手机网站支付，app|App支付，更多敬请期待
 $handler = 'wap';
 $pay = Pay::init($handler, $configs);
 ```
